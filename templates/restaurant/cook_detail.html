@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ cook.username }}
+    <a href="{% url 'restaurant:cook-delete' pk=driver.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'restaurant:cook-update' pk=driver.id %}" class="btn btn-secondary link-to-page">
+      Update license number
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ cook.first_name }}</p>
+  <p><strong>Last name:</strong> {{ cook.last_name }}</p>
+  <p><strong>Experience:</strong> {{ cook.years_of_experience }}</p>
+
+{% endblock %}

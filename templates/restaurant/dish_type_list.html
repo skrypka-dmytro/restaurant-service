@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
 
-</body>
-</html>
+{% block content %}
+  <h1 class="text-center">
+    Dish Type
+  </h1>
+
+  <form action="" method="get" class="form-inline">
+
+    {{ search_form|crispy }}
+    <input type="submit" class="btn-primary" value="Search">
+
+  </form>
+
+  <br>
+
+  {% if dish_type_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for dish_type in dish_type_list %}
+        <tr>
+          <td>
+              {{ dish_type.id }}
+          </td>
+          <td>
+              {{ dish_type.name }}
+          </td>
+          <td>
+              <a href="{% url 'restaurant:dish_type_list-update' pk=dish_type.id %}" class="btn btn-primary">
+                Update
+              </a>
+            </td>
+            <td>
+              <a
+                href="{% url 'restaurant:dish_type_list-delete' pk=dish_type.id %}" class="btn btn-danger">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no manufacturers in the service.</p>
+  {% endif %}
+  <a href="{% url 'restaurant:dish_type_list-create' %}" class="btn btn-primary">
+      Create
+  </a>
+{% endblock %}
