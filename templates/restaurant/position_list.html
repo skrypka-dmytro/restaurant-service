@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 class="text-center">
+    Positions
+  </h1>
+
+  <form action="" method="get" class="form-inline">
+
+    {{ search_form|crispy }}
+    <input type="submit" class="btn-primary" value="Search">
+
+  </form>
+
+  <br>
+
+  {% if position_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for position in position_list %}
+        <tr>
+          <td>
+              {{ position.name }}
+          </td>
+          <td>
+              <a href="{% url 'restaurant:position-update' pk=dish.id %}" class="btn btn-primary">
+                Update
+              </a>
+            </td>
+            <td>
+              <a
+                href="{% url 'restaurant:position-delete' pk=dish.id %}" class="btn btn-danger">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no Position in the restaurant.</p>
+  {% endif %}
+  <a href="{% url 'restaurant:position-create' %}" class="btn btn-primary">
+      Create
+  </a>
+{% endblock %}
+

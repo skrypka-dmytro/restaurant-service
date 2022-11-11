@@ -18,7 +18,7 @@ urlpatterns = [
     path(
         "positions/<int:pk>/update",
         PositionUpdateView.as_view(),
-        name="position-create"
+        name="position-update"
     ),
     path(
         "positions/<int:pk>/delte",
