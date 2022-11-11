@@ -130,7 +130,7 @@ class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
-    success_url = ""
+    success_url = reverse_lazy("restaurant:cook-list")
 
 
 class CookYearOfExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):

@@ -21,8 +21,17 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(default=0, null=True, blank=True)
-    position = models.ForeignKey(Position, null=True, blank=True, on_delete=models.CASCADE)
+    years_of_experience = models.IntegerField(
+        default=0,
+        null=True,
+        blank=True
+    )
+    position = models.ForeignKey(
+        Position,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
+    )
 
     class Meta:
         verbose_name = "cook"

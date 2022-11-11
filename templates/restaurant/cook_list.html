@@ -22,7 +22,7 @@
           <td>{{ cook.first_name }}</td>
           <td>{{ cook.last_name }}</td>
           <td>{{ cook.years_of_experience }}</td>
-          <td>{{ cook.position }}</td>
+          <td>{{ cook.position.name }}</td>
           <td>
               <a class="btn btn-primary"
                   href="{% url 'restaurant:cook-update' pk=cook.id %}">
