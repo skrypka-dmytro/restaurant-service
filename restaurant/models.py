@@ -3,6 +3,10 @@ from django.db import models
 from django.urls import reverse
 
 
+class Position(models.Model):
+    name = models.CharField(max_length=65)
+
+
 class DishType(models.Model):
     name = models.CharField(max_length=65, unique=True)
 
@@ -14,7 +18,8 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(default=0)
+    years_of_experience = models.IntegerField()
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "cook"
