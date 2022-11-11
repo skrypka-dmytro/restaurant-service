@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import CookCreationForm, CookYearOfExperienceUpdateForm, DishForm
+from restaurant.forms import CookCreationForm, CookYearOfExperienceUpdateForm, DishForm, DishTypeSearchForm, \
+    DishSearchForm
 from restaurant.models import DishType, Cook, Dish
 
 
@@ -31,22 +32,22 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     queryset = DishType.objects.all()
     paginate_by = 5
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super(DishTypeListView, self).get_context_data(**kwargs)
-    #     name = self.request.GET.get("name", "")
-    #
-    #     context["search_form"] = DishTypeListView(initial={"name": name})
-    #
-    #     return context
-    #
-    # def get_queryset(self):
-    #     form = DishTypeListView(self.request.GET)
-    #
-    #     if form.is_valid():
-    #         return self.queryset.filter(
-    #             name__icontains=form.cleaned_data["name"]
-    #         )
-    #     return self.queryset
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishTypeListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = DishTypeSearchForm(initial={"name": name})
+
+        return context
+
+    def get_queryset(self):
+        form = DishTypeSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
@@ -99,6 +100,23 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     paginate_by = 5
     queryset = Dish.objects.select_related("dish_type")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = DishSearchForm(initial={"name": name})
+
+        return context
+
+    def get_queryset(self):
+        form = DishSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
