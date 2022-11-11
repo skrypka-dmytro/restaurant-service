@@ -5,8 +5,22 @@ from django.contrib.auth.forms import UserCreationForm
 from restaurant.models import Dish, Cook
 
 
+class PositionSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=65,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
+    )
+
+
 class DishTypeSearchForm(forms.Form):
-    name = forms.CharField(max_length=65, required=False, label="")
+    name = forms.CharField(
+        max_length=65,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
+    )
 
 
 class DishForm(forms.ModelForm):
@@ -25,6 +39,7 @@ class DishSearchForm(forms.Form):
         max_length=65,
         required=False,
         label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
     )
 
 
