@@ -29,13 +29,13 @@
               {{ position.name }}
           </td>
           <td>
-              <a href="{% url 'restaurant:position-update' pk=dish.id %}" class="btn btn-primary">
+              <a href="{% url 'restaurant:position-update' pk=position.id %}" class="btn btn-primary">
                 Update
               </a>
             </td>
             <td>
               <a
-                href="{% url 'restaurant:position-delete' pk=dish.id %}" class="btn btn-danger">
+                href="{% url 'restaurant:position-delete' pk=position.id %}" class="btn btn-danger">
                 Delete
               </a>
             </td>
