@@ -36,6 +36,15 @@ class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     fields = "__all__"
 
 
+class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Position
+    fields = "__all__"
+
+
+class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Position
+
+
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
@@ -83,7 +92,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
-    queryset = Cook.objects.all()
+    queryset = Cook.objects.select_related("position")
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
@@ -94,6 +103,12 @@ class CookDetailView(LoginRequiredMixin, generic.DetailView):
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cook
     form_class = CookCreationForm
+
+
+class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Cook
+    form_class = CookCreationForm
+    success_url = reverse_lazy("restaurant:cook-list")
 
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
