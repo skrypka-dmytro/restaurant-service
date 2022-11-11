@@ -1,10 +1,30 @@
 from django.urls import path
 from .views import index, CookListView, DishTypeCreateView, DishListView, DishTypeListView, DishTypeUpdateView, \
     CookDetailView, CookCreateView, CookYearOfExperienceUpdateView, DishDetailView, DishCreateView, DishDeleteView, \
-    DishUpdateView, DishTypeDeleteView
+    DishUpdateView, DishTypeDeleteView, PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView
 
 urlpatterns = [
     path("", index, name="index"),
+    path(
+        "positions/",
+        PositionListView.as_view(),
+        name="position-list"
+    ),
+    path(
+        "positions/create/",
+        PositionCreateView.as_view(),
+        name="position-create"
+    ),
+    path(
+        "positions/<int:pk>/update",
+        PositionUpdateView.as_view(),
+        name="position-create"
+    ),
+    path(
+        "positions/<int:pk>/delte",
+        PositionDeleteView.as_view(),
+        name="position-delete"
+    ),
     path(
         "dishes-type-list/",
         DishTypeListView.as_view(),
