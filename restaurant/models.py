@@ -6,6 +6,9 @@ from django.urls import reverse
 class Position(models.Model):
     name = models.CharField(max_length=65)
 
+    def __str__(self):
+        return self.name
+
 
 class DishType(models.Model):
     name = models.CharField(max_length=65, unique=True)

@@ -7,7 +7,7 @@ from django.views import generic
 
 from restaurant.forms import CookCreationForm, CookYearOfExperienceUpdateForm, DishForm, DishTypeSearchForm, \
     DishSearchForm
-from restaurant.models import DishType, Cook, Dish
+from restaurant.models import DishType, Cook, Dish, Position
 
 
 @login_required
@@ -23,6 +23,17 @@ def index(request) -> HttpResponse:
     }
 
     return render(request, "restaurant/index.html", context=context)
+
+
+class PositionListView(LoginRequiredMixin, generic.ListView):
+    model = Position
+    queryset = Position.objects.all()
+    paginate_by = 5
+
+
+class PositionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Position
+    fields = "__all__"
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
