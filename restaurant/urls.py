@@ -13,17 +13,17 @@ urlpatterns = [
     path(
         "dishes-type-list/create/",
         DishTypeCreateView.as_view(),
-        name="dish_type_list-create"
+        name="dish-type-create"
     ),
     path(
         "dishes-type-list/<int:pk>/update/",
         DishTypeUpdateView.as_view(),
-        name="dish_type_list-update"
+        name="dish-type-update"
     ),
     path(
         "dishes-type-list/<int:pk>/delete/",
         DishTypeCreateView.as_view(),
-        name="dish-type-list-delete"
+        name="dish-type-delete"
     ),
     path(
         "cooks/",
