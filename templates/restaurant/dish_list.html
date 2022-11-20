@@ -2,21 +2,21 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1 class="text-center">
-    Dishes
+  <h1 class="text-center text-light">
+    <strong class="dish">Dish</strong>
   </h1>
 
   <form action="" method="get" class="form-inline">
     {{ search_form|crispy }}
-    <input type="submit" class="btn-primary" value="Search">
+    <input type="submit" class="btn btn-primary" value="🔍">
 
   </form>
 
   <br>
 
   {% if dish_list %}
-  <table class="table table-striped">
-      <tr>
+  <table class="table table-hover">
+      <tr class="p-3 mb-2 bg-dark text-white">
         <th>Name</th>
         <th>Type Dish</th>
         <th>Description</th>
@@ -25,13 +25,13 @@
         <th>Delete</th>
       </tr>
     {% for dish in dish_list %}
-      <tr>
-        <td><a href="{% url "restaurant:dish-delete" pk=car.id %} ">{{ dish.name }}</a></td>
+      <tr class="text-light">
+        <td>{{ dish.name }}</td>
         <td>{{ dish.dish_type.name }}</td>
         <td>{{ dish.description }}</td>
         <td>{{ dish.price }}$</td>
-        <td><a href="{% url 'restaurant:dish-update' pk=car.id %}" class="btn btn-primary">Update</a></td>
-        <td><a href="{% url 'restaurant:dish-delete' pk=car.id %}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{% url 'restaurant:dish-update' pk=dish.id %}" class="btn btn-primary">Update</a></td>
+        <td><a href="{% url 'restaurant:dish-delete' pk=dish.id %}" class="btn btn-danger">Delete</a></td>
       </tr>
     {% endfor %}
     {% endif %}

@@ -9,6 +9,9 @@ class Position(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("restaurant:position-create", kwargs={"pk": self.pk})
+
 
 class DishType(models.Model):
     name = models.CharField(max_length=65, unique=True)

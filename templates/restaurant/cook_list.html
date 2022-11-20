@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Cook list</h1>
-  <p class="text-lg-end">
-      <a class="btn btn-primary" href="{% url 'restaurant:cook-create' %}">Create new cook</a>
-  </p>
-
+  <h1 class="text-center text-light">
+    <strong class="dish_type">Cook List</strong>
+  </h1>
   {% if cook_list %}
-      <table class="table table-striped">
-      <tr>
+      <table class="table table-hover">
+      <tr class="p-3 mb-2 bg-dark text-white">
         <th>First Name</th>
         <th>Last Name</th>
         <th>Experience</th>
@@ -18,7 +16,7 @@
       </tr>
 
       {% for cook in cook_list %}
-        <tr>
+        <tr class="text-light">
           <td>{{ cook.first_name }}</td>
           <td>{{ cook.last_name }}</td>
           <td>{{ cook.years_of_experience }}</td>
@@ -42,4 +40,8 @@
   {% else %}
       <p>There are no cooks in the service.</p>
   {% endif %}
+  <p class="text-lg-end">
+      <a class="btn btn-primary" href="{% url 'restaurant:cook-create' %}">Create new cook</a>
+  </p>
+  <br>
 {% endblock %}

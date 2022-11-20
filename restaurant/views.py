@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from restaurant.forms import CookCreationForm, CookYearOfExperienceUpdateForm, DishForm, DishTypeSearchForm, \
@@ -51,6 +51,7 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
 class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Position
     fields = "__all__"
+    success_url = reverse_lazy("restaurant:position-list")
 
 
 class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -60,6 +61,7 @@ class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Position
+    success_url = reverse_lazy("restaurant:position-list")
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
@@ -110,6 +112,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     queryset = Cook.objects.select_related("position")
+    paginate_by = 5
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):

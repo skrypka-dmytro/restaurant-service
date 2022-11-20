@@ -10,7 +10,7 @@ class PositionSearchForm(forms.Form):
         max_length=65,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
+        widget=forms.TextInput(attrs={"placeholder": "Enter Position"})
     )
 
 
@@ -19,7 +19,7 @@ class DishTypeSearchForm(forms.Form):
         max_length=65,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
+        widget=forms.TextInput(attrs={"placeholder": "Enter the Dishes Type"})
     )
 
 
@@ -39,7 +39,7 @@ class DishSearchForm(forms.Form):
         max_length=65,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search the dishes"})
+        widget=forms.TextInput(attrs={"placeholder": "Enter the Dishes"})
     )
 
 
@@ -50,6 +50,7 @@ class CookCreationForm(UserCreationForm):
             "first_name",
             "last_name",
             "years_of_experience",
+            "position",
         )
 
 

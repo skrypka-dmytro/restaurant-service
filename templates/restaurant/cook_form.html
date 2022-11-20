@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>Create new Cook</h1>
+  <h1 class="text-light text-center">{{ object|yesno:"Update,Create" }} Cook</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}
@@ -10,3 +10,4 @@
     <input type="submit" value="Submit" class="btn btn-primary">
   </form>
 {% endblock %}
+
