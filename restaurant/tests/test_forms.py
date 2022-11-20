@@ -12,6 +12,7 @@ class FormsTests(TestCase):
             "first_name": "test_name",
             "last_name": "test_surname",
             "years_of_experience": 0,
+            "position": None
         }
 
         form = CookCreationForm(data=form_data)
