@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete The Dish?</h1>
+  <h1 class="text-light">Delete The Dish?</h1>
   <form action="" method="post">
     {% csrf_token %}
 
-    <input type="submit" value="Yes" class="btn btn-danger">
+    <input type="submit" value="Delete" class="btn btn-danger">
+      <a href="/dishes/" role="button" class="btn btn-primary">Cancel</a>
   </form>
 {% endblock %}

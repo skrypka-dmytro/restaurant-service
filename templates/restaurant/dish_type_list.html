@@ -2,44 +2,40 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1 class="text-center">
-    Dish Type
+  <h1 class="text-center text-light">
+    <strong class="dish_type">Dish Type</strong>
   </h1>
 
   <form action="" method="get" class="form-inline">
 
     {{ search_form|crispy }}
-    <input type="submit" class="btn-primary" value="Search">
+    <input type="submit" class="btn btn-primary" value="🔍">
 
   </form>
 
   <br>
 
   {% if dish_type_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
+    <table class="table table-hover">
+      <tr class="p-3 mb-2 bg-dark text-white">
         <th>Name</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>
 
-      {% for dish_type in dish_type_list %}
-        <tr>
+      {% for dish in dish_type_list %}
+        <tr class="text-light">
           <td>
-              {{ dish_type.id }}
+              {{ dish.name }}
           </td>
           <td>
-              {{ dish_type.name }}
-          </td>
-          <td>
-              <a href="{% url 'restaurant:dish_type_list-update' pk=dish_type.id %}" class="btn btn-primary">
+              <a href="{% url 'restaurant:dish-type-update' pk=dish.id %}" class="btn btn-primary">
                 Update
               </a>
             </td>
             <td>
               <a
-                href="{% url 'restaurant:dish_type_list-delete' pk=dish_type.id %}" class="btn btn-danger">
+                href="{% url 'restaurant:dish-type-delete' pk=dish.id %}" class="btn btn-danger">
                 Delete
               </a>
             </td>
@@ -48,9 +44,9 @@
     </table>
 
   {% else %}
-      <p>There are no manufacturers in the service.</p>
+      <p class="text-light">There are no Type of Dishes in the restaurant.</p>
   {% endif %}
-  <a href="{% url 'restaurant:dish_type_list-create' %}" class="btn btn-primary">
+  <a href="{% url 'restaurant:dish-type-create' %}" class="btn btn-primary">
       Create
   </a>
 {% endblock %}

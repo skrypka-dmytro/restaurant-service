@@ -1,27 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Cook list</h1>
-
+  <h1 class="text-center text-light">
+    <strong class="dish_type">Cook List</strong>
+  </h1>
   {% if cook_list %}
-      <table class="table table-striped">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
+      <table class="table table-hover">
+      <tr class="p-3 mb-2 bg-dark text-white">
         <th>First Name</th>
         <th>Last Name</th>
         <th>Experience</th>
+        <th>Position</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>
 
       {% for cook in cook_list %}
-        <tr>
-          <td>{{ cook.id }}</td>
-          <td>{{ cook.username }}</td>
+        <tr class="text-light">
           <td>{{ cook.first_name }}</td>
           <td>{{ cook.last_name }}</td>
           <td>{{ cook.years_of_experience }}</td>
+          <td>{{ cook.position.name }}</td>
           <td>
               <a class="btn btn-primary"
                   href="{% url 'restaurant:cook-update' pk=cook.id %}">
@@ -39,6 +38,10 @@
     </table>
 
   {% else %}
-      <p>There are no cooks in the service.</p>
+      <p class="text-light">There are no cooks in the service.</p>
   {% endif %}
+  <p class="text-lg-end">
+      <a class="btn btn-primary" href="{% url 'restaurant:cook-create' %}">Create new cook</a>
+  </p>
+  <br>
 {% endblock %}

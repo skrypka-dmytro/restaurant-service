@@ -1,6 +1,30 @@
 body {
-    font-family: 'Poppins', sans-serif;;
-    background-color: #EDEEF0;
+    font-family: 'Poppins', sans-serif;
     margin-top: 20px;
-    padding: 0;
+    font-size: 16px;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #eee;
+}
+
+.background {
+    background-image: url("/static/images/bg_v2.png");
+    background-size: cover;
+}
+
+
+.dish,
+.dish_type,
+.pos {
+    font-family: 'Cormorant', serif;
+}
+
+h1 {
+    font-size: 75px;
+    margin-bottom: 32px;
 }

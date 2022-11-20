@@ -1,14 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Restaurant Home</h1>
-    <p>Welcome to Best Restaurant Ever!</p>
-    <h2>Dynamic content</h2>
-    <p>The Restaurant has the following record counts:</p>
-    <ul>
-        <li><strong>Dish Type: </strong> {{ num_dish_type }}</li>
-        <li><strong>Cook: </strong> {{ num_cook }}</li>
-        <li><strong>Dish: </strong> {{ num_dish }}</li>
-    </ul>
+    <h1 class="text-center text-light">
+    <strong class="dish_type">Restaurant Home</strong>
+  </h1>
+    <h2 class="text-center text-light">
+    <p>Welcome to the best restaurant ever!</p>
+  </h2>
+  <br>
+    <h3 class="text-light">Dynamic content</h3>
+    <h4><p class="text-light">The Restaurant has the following record counts:</p></h4>
+    <table class="table table-hover">
+      <tr class="p-3 mb-2 bg-dark text-white">
+        <th>Count of Dish Type</th>
+        <th>Count of Cook</th>
+        <th>Count of Dish</th>
+      </tr>
+      <tr class="text-light">
+        <td>Dish Type: {{ num_dish_type }}</td>
+        <td>Cook: {{ num_cook }}</td>
+        <td>Dish: {{ num_dish }}</td>
+      </tr>
+    </table>
 
 {% endblock %}
