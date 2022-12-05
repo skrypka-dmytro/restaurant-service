@@ -11,11 +11,12 @@ Django project for managing local restaurant service
 Python3 must be already installed
 
 ```shell
-git clone https://github.com/skrypka-dmytro/restaurant-service.git
 cd restaurant-resvice
+git clone https://github.com/skrypka-dmytro/restaurant-service.git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver # starts Django Server
 ```
 
